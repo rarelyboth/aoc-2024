@@ -16,3 +16,5 @@ function(add_day day sources)
     target_include_directories(${day} PRIVATE lib/include)
     target_link_libraries(${day} lib)
 endfunction()
+
+add_day(01 src/01/main.c)
