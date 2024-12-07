@@ -1,3 +1,5 @@
+#include "lib/file.h"
+
 #include <inttypes.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,16 +14,6 @@ int main(void) {
     printf("Part One: %" PRIi32 "\n", part_one("input.txt"));
     printf("Part Two: %" PRIi32 "\n", part_two("input.txt"));
     return 0;
-}
-
-FILE * file_open(char const * filename, char const * modes) {
-    FILE * file = fopen(filename, modes);
-    if (file == NULL) {
-        fprintf(stderr, "Failed to open file '%s'", filename);
-        exit(EXIT_FAILURE);
-    }
-
-    return file;
 }
 
 int32_t compare_ints(void const * first_, void const * second_) {
