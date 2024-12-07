@@ -50,6 +50,8 @@ void array_t_resize(array_t * array, size_t capacity) {
 
     array->data = (char *)realloc(array->data, capacity * array->size);
     assert(array->data);
+
+    array->capacity = capacity;
 }
 
 void array_t_append(array_t * array, void const * value) {
@@ -65,6 +67,25 @@ void * array_t_at(array_t const * array, size_t index) {
     assert(index < array->length);
 
     return array->data + index * array->size;
+}
+
+array_t * array_t_copy(array_t const * array) {
+    array_t * copy = array_t_new(array_t_size(array));
+    array_t_resize(copy, array_t_length(array));
+
+    memcpy(copy->data, array->data, array->length * array->size);
+    copy->length = array_t_length(array);
+
+    return copy;
+}
+
+void array_t_remove(array_t * array, size_t index) {
+    memmove(
+        array->data + index * array->size,
+        array->data + (index + 1) * array->size,
+        (array->length - index - 1) * array->size
+    );
+    --array->length;
 }
 
 void * array_t_begin(array_t const * array) {
