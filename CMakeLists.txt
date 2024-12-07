@@ -18,3 +18,4 @@ function(add_day day sources)
 endfunction()
 
 add_day(01 src/01/main.c)
+add_day(02 src/02/main.c)
