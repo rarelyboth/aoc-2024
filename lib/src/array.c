@@ -79,6 +79,10 @@ array_t * array_t_copy(array_t const * array) {
     return copy;
 }
 
+void array_t_sort(array_t *array, int (*compare_fn)(void const *, void const *)) {
+    qsort(array->data, array->length, array->size, compare_fn);
+}
+
 void array_t_remove(array_t * array, size_t index) {
     memmove(
         array->data + index * array->size,
@@ -89,6 +93,10 @@ void array_t_remove(array_t * array, size_t index) {
 }
 
 void * array_t_begin(array_t const * array) {
+    if (array_t_length(array) == 0) {
+        return array_t_end(array);
+    }
+
     return array_t_at(array, 0);
 }
 

@@ -19,3 +19,4 @@ endfunction()
 
 add_day(01 src/01/main.c)
 add_day(02 src/02/main.c)
+add_day(03 src/03/main.c)
