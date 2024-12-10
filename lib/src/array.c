@@ -83,6 +83,16 @@ void array_t_sort(array_t *array, int (*compare_fn)(void const *, void const *))
     qsort(array->data, array->length, array->size, compare_fn);
 }
 
+void * array_t_linear_find(array_t const * array, void const * value, bool(*equality_fn)(void const *, void const *)) {
+    for (void * it = array_t_begin(array); it != array_t_end(array); ++it) {
+        if (equality_fn(it, value)) {
+            return it;
+        }
+    }
+
+    return nullptr;
+}
+
 void array_t_remove(array_t * array, size_t index) {
     memmove(
         array->data + index * array->size,
