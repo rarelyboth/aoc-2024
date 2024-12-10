@@ -8,12 +8,14 @@ include_directories(include)
 set(include
     include/lib/array.h
     include/lib/file.h
+    include/lib/matrix.h
     include/lib/parse.h
 )
 
 set(src
     src/array.c
     src/file.c
+    src/matrix.c
     src/parse.c
 )
 
