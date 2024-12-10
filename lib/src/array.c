@@ -1,6 +1,7 @@
 #include "lib/array.h"
 
 #include <assert.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -44,6 +45,10 @@ size_t array_t_size(array_t const * array) {
     return array->size;
 }
 
+bool array_t_empty(array_t const *array) {
+    return array->length == 0;
+}
+
 void array_t_resize(array_t * array, size_t capacity) {
     assert(array && array->data);
     assert(capacity >= 0);
@@ -84,13 +89,13 @@ void array_t_sort(array_t *array, int (*compare_fn)(void const *, void const *))
 }
 
 void * array_t_linear_find(array_t const * array, void const * value, bool(*equality_fn)(void const *, void const *)) {
-    for (void * it = array_t_begin(array); it != array_t_end(array); ++it) {
+    for (void const * it = (void const *)array_t_begin(array); it != array_t_end(array); it += array->size) {
         if (equality_fn(it, value)) {
             return it;
         }
     }
 
-    return nullptr;
+    return array_t_end(array);
 }
 
 void array_t_remove(array_t * array, size_t index) {

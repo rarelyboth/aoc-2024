@@ -10,6 +10,7 @@ void array_t_free(array_t * array);
 size_t array_t_capacity(array_t const * array);
 size_t array_t_length(array_t const * array);
 size_t array_t_size(array_t const * array);
+bool array_t_empty(array_t const * array);
 
 void array_t_resize(array_t * array, size_t capacity);
 
