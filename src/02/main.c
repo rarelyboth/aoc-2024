@@ -81,7 +81,7 @@ int32_t part_one(char const * filename) {
     int32_t safe_reports = 0;
     while (fgets(buffer, buffer_size, file) != nullptr) {
         array_t * report_levels = array_t_new(sizeof(int32_t));
-        parse_numbers(buffer, report_levels);
+        parse_i32_numbers(buffer, report_levels);
 
         if (report_levels_safe(report_levels, false)) {
             ++safe_reports;
@@ -104,7 +104,7 @@ int32_t part_two(char const * filename) {
     int32_t safe_reports = 0;
     while (fgets(buffer, buffer_size, file) != nullptr) {
         array_t * report_levels = array_t_new(sizeof(int32_t));
-        parse_numbers(buffer, report_levels);
+        parse_i32_numbers(buffer, report_levels);
 
         if (report_levels_safe(report_levels, true)) {
             ++safe_reports;

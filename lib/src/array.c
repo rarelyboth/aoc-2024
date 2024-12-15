@@ -98,6 +98,16 @@ void * array_t_linear_find(array_t const * array, void const * value, bool(*equa
     return array_t_end(array);
 }
 
+void * array_t_iterator_next(array_t const * array, void * iterator) {
+    return iterator + array->size;
+}
+
+void array_t_accumulate(array_t const * array, void * result, void (*fn)(void *, void const *)) {
+    for (void * it = array_t_begin(array); it != array_t_end(array); it += array->size) {
+        fn(result, it);
+    }
+}
+
 void array_t_remove(array_t * array, size_t index) {
     memmove(
         array->data + index * array->size,

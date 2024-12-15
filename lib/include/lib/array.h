@@ -19,6 +19,7 @@ void * array_t_at(array_t const * array, size_t index);
 array_t * array_t_copy(array_t const * array);
 void array_t_sort(array_t * array, int (*compare_fn)(void const *, void const *));
 void * array_t_linear_find(array_t const * array, void const * value, bool (*equality_fn)(void const *, void const *));
+void array_t_accumulate(array_t const * array, void * result, void (*fn)(void *, void const *));
 
 void array_t_remove(array_t * array, size_t index);
 

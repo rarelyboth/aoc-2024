@@ -67,7 +67,7 @@ rule_t parse_rule(char const * string) {
 array_t * parse_update(char const * string) {
     array_t * update = array_t_new(sizeof(int32_t));
 
-    parse_numbers(string, update);
+    parse_i32_numbers(string, update);
 
     return update;
 }
