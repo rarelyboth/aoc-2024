@@ -8,6 +8,7 @@ include_directories(include)
 set(include
     include/lib/array.h
     include/lib/file.h
+    include/lib/graph.h
     include/lib/matrix.h
     include/lib/parse.h
 )
@@ -15,6 +16,7 @@ set(include
 set(src
     src/array.c
     src/file.c
+    src/graph.c
     src/matrix.c
     src/parse.c
 )
