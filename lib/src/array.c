@@ -84,7 +84,7 @@ array_t * array_t_copy(array_t const * array) {
     return copy;
 }
 
-void array_t_sort(array_t *array, int (*compare_fn)(void const *, void const *)) {
+void array_t_sort(array_t * array, int (*compare_fn)(void const *, void const *)) {
     qsort(array->data, array->length, array->size, compare_fn);
 }
 
@@ -96,6 +96,10 @@ void * array_t_linear_find(array_t const * array, void const * value, bool(*equa
     }
 
     return array_t_end(array);
+}
+
+void * array_t_binary_find(array_t const * array, void const * value, int (*compare_fn)(void const *, void const *)) {
+    return bsearch(value, array, array->length, array->size, compare_fn);
 }
 
 void * array_t_iterator_next(array_t const * array, void * iterator) {
