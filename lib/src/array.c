@@ -129,6 +129,18 @@ void * array_t_begin(array_t const * array) {
     return array_t_at(array, 0);
 }
 
-void * array_t_end(array_t const *array) {
+void * array_t_end(array_t const * array) {
     return array->data + array->length * array->size;
+}
+
+void * array_t_rbegin(array_t const * array) {
+    if (array_t_length(array) == 0) {
+        return array_t_end(array);
+    }
+
+    return array_t_at(array, array->length - 1);
+}
+
+void * array_t_rend(array_t const * array) {
+    return array_t_at(array, 0) - array->size;
 }

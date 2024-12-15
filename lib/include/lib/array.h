@@ -26,3 +26,5 @@ void array_t_remove(array_t * array, size_t index);
 
 void * array_t_begin(array_t const * array);
 void * array_t_end(array_t const * array);
+void * array_t_rbegin(array_t const * array);
+void * array_t_rend(array_t const * array);
